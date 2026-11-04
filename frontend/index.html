@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Support Platform</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">✦ Support<span>AI</span></div>
+    <div class="top-actions">
+      <span id="userLabel">Customer Portal</span>
+      <button id="logoutBtn" class="secondary hidden" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">MULTI-TENANT CUSTOMER SERVICE</p>
+        <h1>AI Support Platform</h1>
+        <p class="muted">Customer assistance, ticket management and insights in one place.</p>
+      </div>
+      <div class="status"><i></i> API connected</div>
+    </section>
+
+    <section class="toolbar">
+      <label>Choose organization
+        <select id="tenantSelect"><option value="">Loading organizations...</option></select>
+      </label>
+      <div class="tabs">
+        <button class="tab active" data-page="chat">Customer Chat</button>
+        <button class="tab" data-page="tickets">Tickets</button>
+        <button class="tab" data-page="analytics">Analytics</button>
+      </div>
+    </section>
+
+    <section id="loginPanel" class="panel login-panel">
+      <div>
+        <p class="eyebrow">AGENT ACCESS</p>
+        <h2>Sign in to manage support</h2>
+        <p class="muted">Login is required for tickets and analytics.</p>
+      </div>
+      <form id="loginForm">
+        <input id="email" type="email" placeholder="Email address" required>
+        <input id="password" type="password" placeholder="Password" required>
+        <button class="primary" type="submit">Sign in</button>
+        <p id="loginError" class="error"></p>
+      </form>
+    </section>
+
+    <section id="chatPage" class="page">
+      <div class="panel chat-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">CUSTOMER ASSISTANCE</p>
+            <h2 id="chatTitle">Support Assistant</h2>
+          </div>
+          <button class="secondary" id="newChatBtn">New conversation</button>
+        </div>
+        <div id="chatMessages" class="messages">
+          <div class="empty">Select an organization and start a conversation.</div>
+        </div>
+        <form id="chatForm" class="chat-input">
+          <input id="chatInput" placeholder="Type your message or order ID..." autocomplete="off" required>
+          <button class="primary" type="submit">Send</button>
+        </form>
+        <p id="chatError" class="error"></p>
+      </div>
+    </section>
+
+    <section id="ticketsPage" class="page hidden">
+      <div class="panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">HUMAN SUPPORT</p><h2>Ticket Management</h2></div>
+          <button class="secondary" id="refreshTickets">Refresh</button>
+        </div>
+        <div class="ticket-layout">
+          <div id="ticketList" class="ticket-list">
+            <div class="empty">Sign in to view tickets.</div>
+          </div>
+          <div id="ticketDetails" class="ticket-details">
+            <div class="empty">Select a ticket to view its details.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="analyticsPage" class="page hidden">
+      <div class="panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">PLATFORM INSIGHTS</p><h2>Analytics Overview</h2></div>
+          <button class="secondary" id="refreshAnalytics">Refresh</button>
+        </div>
+        <div id="metricCards" class="metrics">
+          <div class="empty">Sign in to load analytics.</div>
+        </div>
+        <div id="analyticsExtra" class="analytics-extra"></div>
+      </div>
+    </section>
+
+    <footer>AI Support Platform · Powered by FastAPI</footer>
+  </main>
+  <script src="/static/script.js"></script>
+</body>
+</html>

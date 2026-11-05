@@ -316,4 +316,41 @@ $("refreshAnalytics").onclick = loadAnalytics;
   }
 })();
 // '@ | Set-Content .\static\script.js -Encoding UTF8
+// Main application tab navigation
+document.querySelectorAll(".tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const pageName = btn.dataset.page;
+    const targetPage = document.getElementById(`${pageName}Page`);
 
+    if (!targetPage) {
+      console.error(`Page not found: ${pageName}Page`);
+      return;
+    }
+
+    // Update active tab
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.classList.toggle("active", tab === btn);
+    });
+
+    // Hide all pages
+    document.querySelectorAll(".page").forEach(page => {
+      page.classList.add("hidden");
+    });
+
+    // Show selected page
+    targetPage.classList.remove("hidden");
+
+    // Load page-specific data
+    if (pageName === "tickets") {
+      loadTickets();
+    }
+
+    if (pageName === "analytics") {
+      loadAnalytics();
+    }
+  });
+});
+
+$("refreshTickets").onclick = loadTickets;
+$("refreshAnalytics").onclick = loadAnalytics;
+// '@ | Set-Content .\static\script.js -Encoding UTF8

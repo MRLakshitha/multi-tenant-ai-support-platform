@@ -1,0 +1,228 @@
+.i2c-container {
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 24px;
+    color: var(--ink);
+}
+
+.i2c-heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.i2c-heading h2 {
+    margin: 8px 0;
+    font-size: 28px;
+}
+
+.i2c-heading p,
+.i2c-work-panel p {
+    color: var(--muted);
+}
+
+.i2c-eyebrow {
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.i2c-key-panel,
+.i2c-work-panel,
+.i2c-result {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 20px;
+}
+
+.i2c-key-panel h3,
+.i2c-work-panel h3 {
+    margin-top: 0;
+}
+
+.i2c-key-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 12px;
+}
+
+.i2c-key-grid label,
+.i2c-label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.i2c-key-grid input,
+.i2c-work-panel textarea,
+.i2c-work-panel select,
+.i2c-improve input {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px;
+    font: inherit;
+    background: var(--surface);
+    color: var(--ink);
+}
+
+.i2c-key-panel small {
+    color: var(--muted);
+}
+
+.i2c-mode-switch {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.i2c-mode,
+.i2c-actions button,
+.i2c-improve button {
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.i2c-mode.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.i2c-work-panel input[type="file"] {
+    margin: 14px 0;
+}
+
+.i2c-image-box {
+    min-height: 130px;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    margin: 14px 0;
+    color: var(--muted);
+}
+
+.i2c-image-preview {
+    display: block;
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    margin: 15px auto;
+    border-radius: 8px;
+}
+
+.i2c-primary {
+    background: var(--primary);
+    color: white;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+.i2c-primary:disabled,
+.i2c-actions button:disabled,
+.i2c-improve button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.i2c-status {
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--muted);
+    margin: 16px 0;
+}
+
+.i2c-result-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.i2c-code-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 16px;
+}
+
+.i2c-code-panel textarea {
+    width: 100%;
+    min-height: 480px;
+    resize: vertical;
+    padding: 16px;
+    border-radius: 8px;
+    background: #171923;
+    color: #e5e7eb;
+    border: 1px solid #343849;
+    font: 13px/1.6 Consolas, monospace;
+    tab-size: 2;
+}
+
+.i2c-preview-panel iframe {
+    width: 100%;
+    height: 480px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: white;
+}
+
+.i2c-improve {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.i2c-improve input {
+    min-width: 0;
+}
+
+@media (max-width: 850px) {
+    .i2c-code-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .i2c-key-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+    .i2c-container {
+        padding: 12px;
+    }
+
+    .i2c-mode-switch,
+    .i2c-improve {
+        flex-direction: column;
+    }
+
+    .i2c-mode,
+    .i2c-improve button {
+        width: 100%;
+    }
+
+    .i2c-code-panel textarea,
+    .i2c-preview-panel iframe {
+        min-height: 350px;
+        height: 350px;
+    }
+}

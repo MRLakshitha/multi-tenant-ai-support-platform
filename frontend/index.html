@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Support Platform</title>
   <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/image_to_code.css">
 </head>
 <body>
   <header class="topbar">
@@ -33,6 +34,7 @@
         <button class="tab active" data-page="chat">Customer Chat</button>
         <button class="tab" data-page="tickets">Tickets</button>
         <button class="tab" data-page="analytics">Analytics</button>
+        <button class="tab" data-page="imageCode">Image to Code</button>
       </div>
     </section>
 
@@ -100,8 +102,121 @@
       </div>
     </section>
 
+    <section id="imageCodePage" class="page hidden">
+    <div class="i2c-container">
+
+        <div class="i2c-heading">
+            <div>
+                <span class="i2c-eyebrow">AI DEVELOPMENT STUDIO</span>
+                <h2>Image to Code Studio</h2>
+                <p>Convert screenshots into frontend code or generate designs from text prompts.</p>
+            </div>
+        </div>
+
+        <div class="i2c-key-panel">
+            <h3>API Configuration</h3>
+            <div class="i2c-key-grid">
+                <label>
+                    Gemini API Key
+                    <input type="password" id="i2cGeminiKey"
+                           placeholder="Enter your Gemini API key">
+                </label>
+                <label>
+                    Pollinations API Key
+                    <input type="password" id="i2cPollinationsKey"
+                           placeholder="Enter your Pollinations API key">
+                </label>
+            </div>
+            <small>Keys are used for requests and are not saved in browser storage.</small>
+        </div>
+
+        <div class="i2c-mode-switch">
+            <button class="i2c-mode active" data-mode="upload">
+                Image to Code
+            </button>
+            <button class="i2c-mode" data-mode="text">
+                Text to Image + Code
+            </button>
+        </div>
+
+        <div id="i2cUploadMode" class="i2c-work-panel">
+            <h3>Upload your design</h3>
+            <p>Select a PNG, JPG or WEBP screenshot (maximum 20 MB).</p>
+
+            <input type="file" id="i2cImageInput"
+                   accept="image/png,image/jpeg,image/webp">
+
+            <div id="i2cImageBox" class="i2c-image-box">
+                <span>No image selected</span>
+                <img id="i2cUploadedImage" alt="Uploaded design preview"
+                     class="i2c-image-preview hidden">
+            </div>
+
+            <button id="i2cGenerateUpload" class="i2c-primary">
+                Generate Code
+            </button>
+        </div>
+
+        <div id="i2cTextMode" class="i2c-work-panel hidden">
+            <h3>Describe your design</h3>
+            <textarea id="i2cPrompt" rows="4"
+                placeholder="Example: Create a modern responsive landing page for a travel website with a hero section, navigation bar and destination cards."></textarea>
+
+            <label class="i2c-label">
+                Generated image dimensions
+            </label>
+            <select id="i2cDimensions">
+                <option value="1024">1024 × 1024</option>
+            </select>
+
+            <button id="i2cGenerateText" class="i2c-primary">
+                Generate Image and Code
+            </button>
+
+            <img id="i2cGeneratedImage"
+                 class="i2c-image-preview hidden"
+                 alt="AI generated design">
+        </div>
+
+        <div id="i2cStatus" class="i2c-status" aria-live="polite">
+            Ready to generate.
+        </div>
+
+        <div id="i2cResult" class="i2c-result hidden">
+            <div class="i2c-result-heading">
+                <h3>Generated Code</h3>
+                <div class="i2c-actions">
+                    <button id="i2cCopy">Copy Code</button>
+                    <button id="i2cDownload">Download Code</button>
+                </div>
+            </div>
+
+            <div class="i2c-code-layout">
+                <div class="i2c-code-panel">
+                    <textarea id="i2cCode" spellcheck="false"
+                        placeholder="Generated code will appear here..."></textarea>
+
+                    <div class="i2c-improve">
+                        <input id="i2cImprovePrompt"
+                            placeholder="Example: Make the layout more responsive">
+                        <button id="i2cImprove">Improve Code</button>
+                    </div>
+                </div>
+
+                <div class="i2c-preview-panel">
+                    <h3>Live Preview</h3>
+                    <iframe id="i2cPreview"
+                        title="Generated website preview"
+                        sandbox="allow-scripts"></iframe>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
     <footer>AI Support Platform · Powered by FastAPI</footer>
   </main>
   <script src="/static/script.js"></script>
+  <script src="/static/image_to_code.js"></script>
 </body>
 </html>
